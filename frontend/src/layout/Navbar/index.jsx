@@ -1,8 +1,10 @@
 import React from "react";
-import { FaFacebook } from "react-icons/fa";
+import { FaFacebook, FaInstagramSquare, FaLink } from "react-icons/fa";
 import {Link} from 'react-router-dom'
 import "./navbar.scss";
-
+import { FaSquareInstagram } from "react-icons/fa6";
+import { FaTwitter } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
 function Navbar() {
   return (
     <>
@@ -10,9 +12,9 @@ function Navbar() {
         <div className="headerMain">
           <div className="linksForHeader">
             <FaFacebook />
-            <FaFacebook />
-            <FaFacebook />
-            <FaFacebook />
+            <FaSquareInstagram />
+            <FaTwitter />
+            <FaLinkedin />
           </div>
 
           <div className="rightHeader">
@@ -29,9 +31,9 @@ function Navbar() {
 
           <div className="rightLinksForNavbar">
             <Link>Home</Link>
-            <Link>Add Page</Link>
-            <Link>Basket</Link>
-            <Link>Wishlist</Link>
+            <Link to="/add">Add Page</Link>
+            <Link to="/cart">Basket</Link>
+            <Link to="/wishlist">Wishlist</Link>
             <Link>Specials</Link>
             <Link>Specials</Link>
             <Link>Contact</Link>

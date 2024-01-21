@@ -7,7 +7,9 @@ import {
 import UserRoot from "../pages/UserRoot";
 import Home from "../pages/Home";
 import AddPage from "../pages/AddPage";
-
+import Wishlist from "../pages/Wishlist";
+import Cart from "../pages/Cart";
+import Detail from "../pages/Detail";
 
 export const routes = [
   {
@@ -21,6 +23,18 @@ export const routes = [
       {
         path: "/add",
         element: <AddPage />,
+      },
+      {
+        path: "/wishlist",
+        element: <Wishlist />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
+      },
+      {
+        path: "/detail/:id",
+        element: <Detail />,
       },
     
     ],
