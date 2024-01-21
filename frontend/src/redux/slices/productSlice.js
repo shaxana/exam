@@ -28,7 +28,7 @@ export const productSlice = createSlice({
   initialState,
   reducers: {
     addToWishlist: (state, action) => {
-      let { _id, name, price, description, rating } = action.payload;
+      let { _id, name, price, description, rating , imgUrl} = action.payload;
       let wishlistProductIndex = state.wishlistProduct.findIndex(
         (w) => w._id === _id
       );
@@ -37,39 +37,36 @@ export const productSlice = createSlice({
       } else {
         state.wishlistProduct = [
           ...state.wishlistProduct,
-          { _id, name, price, description, rating },
+          { _id, name, price, description, rating , imgUrl},
         ];
       }
       localStorage.setItem("wishlist", JSON.stringify(state.wishlistProduct));
     },
     addToCart: (state, action) => {
-      let { _id, name, price, description, rating } = action.payload;
+      let { _id, name, price, description, rating , imgUrl} = action.payload;
       let cartProductIndex = state.cartProduct.findIndex((c) => c._id === _id);
       if (cartProductIndex !== -1) {
         state.cartProduct[cartProductIndex].count += 1;
       } else {
         state.cartProduct = [
           ...state.cartProduct,
-          { _id, name, price, description, rating, count: 1 },
+          { _id, name, price, description, rating,imgUrl, count: 1 },
         ];
       }
       localStorage.setItem("cart", JSON.stringify(state.cartProduct));
     },
     increaseCount: (state, action) => {
-      let { _id, name, price, description, rating } = action.payload;
+      let { _id, name, price, description, rating,imgUrl } = action.payload;
       let cartProductIndex = state.cartProduct.findIndex((c) => c._id === _id);
       if (cartProductIndex !== -1) {
         if (state.cartProduct[cartProductIndex].count > 1) {
           state.cartProduct[cartProductIndex].count -= 1;
-        } else {
-          let deleted = state.cartProduct.find((c) => c._id !== _id);
-          state.cartProduct.splice(deleted[cartProductIndex], 1)
-        }
+        } 
       }
       localStorage.setItem("cart", JSON.stringify(state.cartProduct));
     },
     deleteProduct: (state,action)=>{
-        let { _id, name, price, description, rating }  = action.payload
+        let { _id, name, price, description, rating , imgUrl}  = action.payload
         let cartProductIndex = state.cartProduct.findIndex((c) => c._id === _id);
             let deleted = state.cartProduct.find((c) => c._id !== _id);
             state.cartProduct.splice(deleted[cartProductIndex], 1)

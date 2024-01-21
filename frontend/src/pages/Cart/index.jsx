@@ -21,12 +21,12 @@ function Cart() {
         cart && cart.map((c)=>{
             return <Grid item xs={4} key={uuidv4()}>
                     <div className="cardForCart">
-                      <div className="imgContainer">
-                        <img src={c.imgUrl} alt="" />
+                      <div className="imgContainerForCart">
+                        <img src={c.imgUrl} alt="cartproductimage" />
 
                         <div className="headerForCard">{c.name}</div>
                         <div className="ratingsForProdct">
-                          <span>
+                          <span  style={{marginRight:"20px"}}>
                             <FaStar /> 5.0
                           </span>
                           <span>
@@ -56,7 +56,7 @@ function Cart() {
                             dispatch(increaseCount(c))
                           }}>-</button>
                           <button onClick={()=>{
-                            dispatch(deleteProduct(c))
+                            dispatch(deleteProduct(c._id))
                           }}>delete</button>
                         </div>
                       </div>

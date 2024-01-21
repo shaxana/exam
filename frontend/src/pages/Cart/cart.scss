@@ -3,6 +3,12 @@
 .cardForCart{
     padding: 20px;
 
+    .imgContainerForCart{
+        img{
+            width: 400px;
+            height: 400px;
+        }
+    }
     .buttonForCart{
         background-color: black;
         color: white;

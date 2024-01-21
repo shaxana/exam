@@ -70,7 +70,7 @@ console.log(products);
 
         <div className="productsCards">
 
-        <Grid container spacing={2}>
+        <Grid container spacing={6}>
             {
             products &&
               products.map((product) => {

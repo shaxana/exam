@@ -1,4 +1,4 @@
-
+@import './../../assets/style/variables.scss';
 header{
     display: flex;
     justify-content: center;
@@ -19,6 +19,9 @@ header{
     .rightHeader{
         span{
             margin-right: 20px;
+        }
+        .iconspan{
+            color: $basic-color;
         }
     }
 }

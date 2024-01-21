@@ -5,6 +5,9 @@ import "./navbar.scss";
 import { FaSquareInstagram } from "react-icons/fa6";
 import { FaTwitter } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
+import { FaPhone } from "react-icons/fa6";
+import { IoMailSharp } from "react-icons/io5";
+
 function Navbar() {
   return (
     <>
@@ -18,8 +21,14 @@ function Navbar() {
           </div>
 
           <div className="rightHeader">
-            <span className="phone">(+1) 234 5678 9101</span>
-            <span className="mail">shop@yourdomain.com</span>
+            <span className="phone"> <span className="iconspan">
+            <FaPhone />
+            </span>
+ (+1) 234 5678 9101</span>
+            <span className="mail"> <span className="iconspan">
+            <IoMailSharp />
+            </span>
+    shop@yourdomain.com</span>
           </div>
         </div>
       </header>

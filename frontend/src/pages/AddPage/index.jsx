@@ -7,7 +7,7 @@ import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
-
+import "./addpage.scss";
 function AddPage() {
   // const products = useSelector((state) => state.products.products);
   // console.log(products);
@@ -21,8 +21,7 @@ function AddPage() {
       .min(2, "Too Short!")
       .max(50, "Too Long!")
       .required("Required"),
-    description: Yup.string()
-      .required("Required"),
+    description: Yup.string().required("Required"),
   });
 
   const [products, setProducts] = useState([]);
@@ -36,6 +35,7 @@ function AddPage() {
   return (
     <>
       <button
+        className="formFirstButton"
         onClick={() => {
           setOpen(!isOpen);
         }}
@@ -45,7 +45,7 @@ function AddPage() {
 
       {isOpen ? (
         <>
-          <h1>Add New Product</h1>
+          <h1 className="formHeader">Add New Product</h1>
           <Formik
             initialValues={{
               name: "",
@@ -59,70 +59,89 @@ function AddPage() {
               console.log(values);
               axios.post("http://localhost:5000/products", values).then(() => {
                 console.log("posted");
-                setProducts([...products, values])
+                setProducts([...products, values]);
               });
             }}
           >
             {({ errors, touched }) => (
               <Form>
-
-                <Field name="name" placeholder="Product name" />
-                {/* If this field has been touched, and it contains an error, display it
-                 */}
-                {touched.name && errors.name && (
-                  <div>{errors.name}</div>
-                )}
-                <Field name="description" placeholder="Product description"  />
-                {/* If this field has been touched, and it contains an error, display
+                <div className="formDiv">
+                  <div className="fieldForForm">
+                    <Field name="name" placeholder="Product name" />
+                    {/* If this field has been touched, and it contains an error, display it
+                     */}
+                    {touched.name && errors.name && <div>{errors.name}</div>}
+                  </div>
+                  <div className="fieldForForm">
+                    <Field
+                      name="description"
+                      placeholder="Product description"
+                    />
+                    {/* If this field has been touched, and it contains an error, display
            it */}
-                {touched.description && errors.description && <div>{errors.description}</div>}
-                <Field name='price'  placeholder="Product price" />
-                <Field name='imgUrl'  placeholder="Image url for product" />
-                <button type="submit">Submit</button>
+                    {touched.description && errors.description && (
+                      <div>{errors.description}</div>
+                    )}
+                  </div>
+                  <div className="fieldForForm">
+                    <Field name="price" placeholder="Product price" />
+                  </div>
+
+                  <div className="fieldForForm">
+                    <Field name="imgUrl" placeholder="Image url for product" />
+                  </div>
+
+                  <button type="submit">Submit</button>
+                </div>
               </Form>
             )}
           </Formik>
         </>
       ) : null}
+      <div className="formTable">
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Description</th>
+              <th>Image</th>
+              <th>delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            {products &&
+              products.map((product) => {
+                return (
+                  <tr key={uuidv4()}>
+                    <td>{product.name}</td>
+                    <td>${product.price}</td>
+                    <td>{product.description}</td>
+                    <td>
 
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Description</th>
-            <th>Image</th>
-            <th>delete</th>
-          </tr>
-        </thead>
-        <tbody>
-          {products &&
-            products.map((product) => {
-              return (
-                <tr key={uuidv4()}>
-                  <td>{product.name}</td>
-                  <td>{product.name}</td>
-                  <td>{product.name}</td>
-                  <td>{product.name}</td>
-                  <td>
-                    <button
-                      onClick={() => {
-                        axios.delete(
-                          `http://localhost:5000/products/${product._id}`
-                        );
-                        setProducts(
-                          products.filter((p) => p._id !== product._id)
-                        );
-                      }}
-                    >
-                      delete
-                    </button>
-                  </td>
-                </tr>
-              );
-            })}
-        </tbody>
-      </Table>
+                      <img src={product.imgUrl} alt="" width={"60px"} />
+                    </td>
+                    <td>
+                      <button
+                        className="deleteBtnForForm"
+                        onClick={() => {
+                          axios.delete(
+                            `http://localhost:5000/products/${product._id}`
+                          );
+                          setProducts(
+                            products.filter((p) => p._id !== product._id)
+                          );
+                        }}
+                      >
+                        delete
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
+          </tbody>
+        </Table>
+      </div>
     </>
   );
 }
