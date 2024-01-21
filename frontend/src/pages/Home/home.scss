@@ -1,0 +1,68 @@
+.heroSectionMain{
+    background-image: url(https://preview.colorlib.com/theme/selling/images/hero_2.jpg.webp);
+    height: 100vh;
+    background-attachment: fixed;
+.maintwoforhero{
+    content: "";
+    top:0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    background-image: rgba(0,0,0,0.5);
+}
+    .heroContent{
+        position: absolute;
+        top: 500px;
+        left: 400px;
+        color: white;
+        padding: 20px;
+
+        .headerTextForHero{
+            font-size: 80px;
+            margin-bottom:20px;
+        }
+        .headerSixForHero{
+            font-size: 20px;
+            font-weight: 400;
+            margin-bottom:40px;
+
+        }
+
+        .buttonsForHeroSection{
+            display: flex;
+            justify-self: center;
+            align-items: center;
+             button{
+                margin-right: 5px;
+                height: 50px;
+             }
+             .heroSectionBtn1{
+                background-color: transparent;
+                border: 2px solid white;
+                color: white;
+                width: 150px;
+
+             }
+             .heroSectionBtn2{
+                width: 200px;
+             }
+        }
+    }
+}
+
+
+.productSectionForData{
+    text-align: center;
+    padding: 70px;
+
+    .headerForProducts{
+        margin-top: 10px;
+        margin-bottom: 25px;
+    }
+    .imgContainer{
+       width: 400px;
+       img{
+        width: 100%;
+       }
+    }
+}
